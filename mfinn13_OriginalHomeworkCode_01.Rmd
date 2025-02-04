@@ -3,6 +3,14 @@ title: "mfinn13_OriginalHomeworkCode_01"
 output: html_document
 date: "2025-02-03"
 ---
+**5 challenges:**
+
+1. The first challenge I encountered was remembering how to actually start a new project/repository and connect it to github. I looked back at module 3 and ended up going with the method where you create it on github first, then use its url to connect it to rstudio.
+2. A second challenge I encountered was actually seeing my commits on github. Sometimes when I could click 'push' on the git tab, I wouldn't actually see it on github. Sometimes I have to go into the tools tab above and kind of manually push the commits. 
+3. A third challenge I had was figuring out how to make data logical valued. At first, I did not even know what this meant, but I googled it. Once I figured out it was a type of data it seemed logical that there would be an as.logical().
+4. I had a hard time with challenge number 5. I'm not sure if I actually changed the type of variables that were actually in the data frame.
+5. I at first had trouble in challenge 2 figuring out how to extract columns and rows as opposed to just one value. 
+
 **Vectors:** essentially a list of data which are all of the same data-type
 
 **Matrix:** a collection of vectors stored together, can also only hold one type of data. Two-dimensional. 
