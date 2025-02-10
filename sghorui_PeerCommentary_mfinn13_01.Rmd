@@ -1,8 +1,17 @@
 ---
-title: "mfinn13_FinalHomeworkCode_01"
+title: "mfinn13_OriginalHomeworkCode_01"
 output: html_document
-date: "2025-02-10"
+date: "2025-02-03"
 ---
+**5 challenges:**
+
+1. The first challenge I encountered was remembering how to actually start a new project/repository and connect it to github. I looked back at module 3 and ended up going with the method where you create it on github first, then use its url to connect it to rstudio.
+2. A second challenge I encountered was actually seeing my commits on github. Sometimes when I could click 'push' on the git tab, I wouldn't actually see it on github. Sometimes I have to go into the tools tab above and kind of manually push the commits. 
+3. A third challenge I had was figuring out how to make data logical valued. At first, I did not even know what this meant, but I googled it. Once I figured out it was a type of data it seemed logical that there would be an as.logical().
+4. I had a hard time with challenge number 5. I'm not sure if I actually changed the type of variables that were actually in the data frame.
+5. I at first had trouble in challenge 2 figuring out how to extract columns and rows as opposed to just one value. 
+
+Comment: I liked where you find difficulties while doing this Module and listed them down. Maybe I should also do that for future assignments!
 
 **Vectors:** essentially a list of data which are all of the same data-type
 
@@ -52,10 +61,7 @@ You can select a subset of a data structure using brackets [like this].
 **Challenge 1**: Extracting every third word from a sentence
 ```{r}
 ulysses <- c("Stately","plump","Buck","Mulligan","came","from","the","stairhead","bearing","a","bowl","of","lather","on","which","a","mirror","and","a","razor","lay","crossed")
-#here I am creating the vector with the words from ulysses.
-
-ulysses2 <- ulysses[seq(from = 3, to = 22, by =3)]
-#here I am using the sequence function to select every third word from the vector
+ulysses2 <- ulysses[seq(from = 3, to = 22, by =3)] #interesting! Another way of doing this (which I used) is u[c(3,6,9,12,15,18,21)], but I see that your code is better for bigger datasets.
 ulysses2
 
 ```
@@ -64,13 +70,11 @@ ulysses2
 m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
 #starting matrix
 m
-
-x <- m[,c(2,3,6)]
-x
-##matrix with the 2nd, 3rd, and 6th columns from m. I originally coded this less efficiently. I coded it similarly to how I coded the 6,7,8 matrix below.
+x <- c(m[ , 2], m[, 3], m[, 6]) #another way: x<-m[,c(2,3,6)]
+##matrix with the 2nd, 3rd, and 6th columns from m
 x
 
-x <- c(m[6, ], m[7, ], m[8, ])
+x <- c(m[6, ], m[7, ], m[8, ]) 
 ##matrix with rows 6, 7, and 8
 x
 
@@ -78,12 +82,17 @@ x <- c(m[2,2]:m[6,9])
 ##matrix from 2,2 to 6,9
 x
 ```
+```{r}
+#I think for the last part, this code is better suited.
+x <- m[c(2,3,4,5,6),c(2,3,4,5,6,7,8,9)]
+x
+```
+
 **Challenge 3** 
 Creating a 4-dimensional, 400 element array with the numbers 400 to 1 descending. 
 ```{r}
 x <- array(data = 400:1, dim = c(5,5,4,4))
 x
-#this creates an array with 4 dimensions. It is essentially 4 groups of 4 2-d arrays, with each 2-d array being 5 rows by 5 columns. There are 16 total 2-d arrays.
 ```
 
 **Overwriting**
@@ -110,29 +119,18 @@ Primate Taxonomy using lists
 Platyrrhini <- c("Cebidae","Atelidae","Pitheciidae")
 Catarrhini <- c("Cercopithecidae","Hylobatidae","Hominidae")
 Tarsioidea <- c("Tarsiidae")
-#first I created the three vectors that are the most basic level
-
 Anthropoidea <- list(Platyrrhini, Catarrhini)
-#here, I added the platyrrhini and catarrhini to a new list, anthropoidea
-
-
 names(Anthropoidea) <- list("Platyrrhini", "Catarrhini")
-#I think this just gives the two elements within anthropoidea their appropriate titles, which appears when printed.
-
 Haplorhini <- list(Anthropoidea, Tarsioidea)
 names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
-#this is a similar process, adding anthropoidea and tarsioidea to a new list, haplorhini, and giving them titles which will be printed
-
 Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
     "Daubentoniidae")
 Lorisoidea <- c("Lorisidae", "Galagidae")
 Strepsirhini <- list(Lemuroidea, Lorisoidea)
 names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
 Primates <- list(Strepsirhini, Haplorhini)
-names(Primates) <- list("Strepsirhini", "Haplorhini")
-#this line I added myself ^
+#Add this also: names(Primates) <- list("Haplorhini", "Strepsirihini")
 Primates
-#these 7 lines I just copied from the module
 
 ```
 
@@ -157,18 +155,9 @@ m3
 df <- data.frame(m3)
 df
 ##data frame constructed, now coerce the second and third columns
-##logical vectors are essentially booleans
-df[,2] <- as.logical(df[,2])
-df[,3] <- as.factor(df[,3])
-#this was a mistake before
+##logical vectors are essentially booleans?
+as.logical(df[,2])
+as.factor(df[,3])
 df
 str(df)
 ```
-
-**5 challenges:**
-
-1. The first challenge I encountered was remembering how to actually start a new project/repository and connect it to github. I looked back at module 3 and ended up going with the method where you create it on github first, then use its url to connect it to rstudio.
-2. A second challenge I encountered was actually seeing my commits on github. Sometimes when I could click 'push' on the git tab, I wouldn't actually see it on github. Sometimes I have to go into the tools tab above and kind of manually push the commits. 
-3. A third challenge I had was figuring out how to make data logical valued. At first, I did not even know what this meant, but I googled it. Once I figured out it was a type of data it seemed logical that there would be an as.logical().
-4. I had a hard time with challenge number 5. I'm not sure if I actually changed the type of variables that were actually in the data frame.
-5. I at first had trouble in challenge 2 figuring out how to extract columns and rows as opposed to just one value. 
